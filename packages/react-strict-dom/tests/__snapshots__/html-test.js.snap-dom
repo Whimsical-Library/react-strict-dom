@@ -1430,6 +1430,17 @@ exports[`html "div" supports inline event handlers 1`] = `
 />
 `;
 
+exports[`html "div" supports overflow style 1`] = `
+<div
+  className="html-div xe8uvvx x1ghz6dp x1717udv"
+  style={
+    {
+      "overflow": "scroll",
+    }
+  }
+/>
+`;
+
 exports[`html "em" ignores and warns about unsupported attributes 1`] = `
 <em
   className="html-em x1ghz6dp x1717udv x1hl2dhg x16tdsg8 x1vvkbs"

@@ -937,6 +937,17 @@ exports[`html html prop polyfills tabIndex value 1`] = `
 />
 `;
 
+exports[`html overflow styles scroll 1`] = `
+<ScrollView
+  style={
+    {
+      "overflow": "scroll",
+      "position": "static",
+    }
+  }
+/>
+`;
+
 exports[`html style polyfills "caretColor" transparent 1`] = `
 <TextInput
   caretHidden={true}

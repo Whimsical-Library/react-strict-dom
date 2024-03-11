@@ -8,7 +8,6 @@
  */
 
 import * as React from 'react';
-import { ScrollView } from 'react-native';
 import { css, html } from 'react-strict-dom';
 import { tokens } from './tokens.stylex';
 
@@ -22,9 +21,9 @@ const egStyles = css.create({
   h1: { padding: 10, backgroundColor: '#eee' },
   content: { padding: 10 },
   div: {
-    paddingBottom: 50,
-    paddingTop: 50,
-    backgroundColor: 'white'
+    paddingTop: 30,
+    backgroundColor: 'white',
+    overflow: 'scroll'
   }
 });
 
@@ -88,425 +87,420 @@ export default function App(): React.MixedElement {
   const [animate, setAnimate] = React.useState(false);
 
   return (
-    <ScrollView>
-      <html.div style={egStyles.div}>
-        <ExampleBlock title="HTML elements">
-          <html.div data-testid="testid" role="none">
-            div
-          </html.div>
-          <html.span suppressHydrationWarning={true}>span</html.span>
-          <html.p>paragraph</html.p>
+    <html.div style={egStyles.div}>
+      <ExampleBlock title="HTML elements">
+        <html.div data-testid="testid" role="none">
+          div
+        </html.div>
+        <html.span suppressHydrationWarning={true}>span</html.span>
+        <html.p>paragraph</html.p>
 
-          <html.div />
+        <html.div />
 
+        <html.span>
+          <html.a href="https://google.com">anchor</html.a>,
+          <html.code>code</html.code>,<html.em>em</html.em>,
+          <html.strong>strong</html.strong>,
           <html.span>
-            <html.a href="https://google.com">anchor</html.a>,
-            <html.code>code</html.code>,<html.em>em</html.em>,
-            <html.strong>strong</html.strong>,
-            <html.span>
-              H<html.sub>2</html.sub>0
-            </html.span>
-            ,
-            <html.span>
-              E=mc<html.sup>2</html.sup>
-            </html.span>
+            H<html.sub>2</html.sub>0
           </html.span>
-
-          <html.div />
-
-          <html.pre>pre</html.pre>
-
-          <html.div />
-
-          <html.h1>h1</html.h1>
-          <html.h2>h2</html.h2>
-          <html.h3>h3</html.h3>
-          <html.h4>h4</html.h4>
-          <html.h5>h5</html.h5>
-          <html.h6>h6</html.h6>
-
+          ,
           <html.span>
-            line <html.br /> break
+            E=mc<html.sup>2</html.sup>
           </html.span>
-          <html.hr />
+        </html.span>
 
-          {/* text inheritance and text children */}
-          <html.div>Text inside div (kind of) works</html.div>
-          <html.div style={styles.inheritedText}>
-            <html.div>
-              <html.span>Text style inheritance works</html.span>
-            </html.div>
+        <html.div />
+
+        <html.pre>pre</html.pre>
+
+        <html.div />
+
+        <html.h1>h1</html.h1>
+        <html.h2>h2</html.h2>
+        <html.h3>h3</html.h3>
+        <html.h4>h4</html.h4>
+        <html.h5>h5</html.h5>
+        <html.h6>h6</html.h6>
+
+        <html.span>
+          line <html.br /> break
+        </html.span>
+        <html.hr />
+
+        {/* text inheritance and text children */}
+        <html.div>Text inside div (kind of) works</html.div>
+        <html.div style={styles.inheritedText}>
+          <html.div>
+            <html.span>Text style inheritance works</html.span>
           </html.div>
+        </html.div>
 
-          <html.img
-            onLoad={(e) => {
-              console.log(e.type, e);
-            }}
-            width={150}
-            height={150}
-            src="http://placehold.jp/150x150.png"
-            style={styles.objContain}
-          />
+        <html.img
+          onLoad={(e) => {
+            console.log(e.type, e);
+          }}
+          width={150}
+          height={150}
+          src="http://placehold.jp/150x150.png"
+          style={styles.objContain}
+        />
 
-          <html.div />
-          <html.label for="id">label</html.label>
-          <html.div />
-          <html.button>button</html.button>
-          <html.div />
-          {/*<html.input placeholder="input type:date" type="date" />*/}
-          <html.div />
-          <html.input placeholder="input type:email" type="email" />
-          <html.div />
-          <html.input placeholder="input type:number" type="number" />
-          <html.div />
-          <html.input placeholder="input type:search" type="search" />
-          <html.div />
-          <html.input placeholder="input type:tel" type="tel" />
-          <html.div />
-          <html.input placeholder="input type:text" type="text" />
-          <html.div />
-          <html.input
-            placeholder="input inputMode:numeric"
-            inputMode="numeric"
-          />
-          <html.div />
-          <html.input placeholder="input enterKeyHint:go" enterKeyHint="go" />
-          <html.div />
-          <html.select>
-            <html.optgroup label="optgroup">
-              <html.option label="option 1" />
-              <html.option label="option 2" />
-              <html.option label="option 3" />
-            </html.optgroup>
-          </html.select>
-          <html.div />
-          <html.textarea placeholder="textarea" />
-        </ExampleBlock>
+        <html.div />
+        <html.label for="id">label</html.label>
+        <html.div />
+        <html.button>button</html.button>
+        <html.div />
+        {/*<html.input placeholder="input type:date" type="date" />*/}
+        <html.div />
+        <html.input placeholder="input type:email" type="email" />
+        <html.div />
+        <html.input placeholder="input type:number" type="number" />
+        <html.div />
+        <html.input placeholder="input type:search" type="search" />
+        <html.div />
+        <html.input placeholder="input type:tel" type="tel" />
+        <html.div />
+        <html.input placeholder="input type:text" type="text" />
+        <html.div />
+        <html.input placeholder="input inputMode:numeric" inputMode="numeric" />
+        <html.div />
+        <html.input placeholder="input enterKeyHint:go" enterKeyHint="go" />
+        <html.div />
+        <html.select>
+          <html.optgroup label="optgroup">
+            <html.option label="option 1" />
+            <html.option label="option 2" />
+            <html.option label="option 3" />
+          </html.optgroup>
+        </html.select>
+        <html.div />
+        <html.textarea placeholder="textarea" />
+      </ExampleBlock>
 
-        {/* variables & themes */}
-        <ExampleBlock title="Variables & Theming">
-          <html.p style={styles.inheritedText}>Global variables</html.p>
+      {/* variables & themes */}
+      <ExampleBlock title="Variables & Theming">
+        <html.p style={styles.inheritedText}>Global variables</html.p>
+        <html.div style={styles.square} />
+
+        <html.p style={[themedTokens, styles.inheritedText]}>
+          Direct theming
+        </html.p>
+        <html.div style={[themedTokens, styles.square]} />
+
+        <html.div style={themedTokens}>
+          <html.p style={styles.inheritedText}>Inherit theming</html.p>
           <html.div style={styles.square} />
+        </html.div>
 
-          <html.p style={[themedTokens, styles.inheritedText]}>
-            Direct theming
-          </html.p>
-          <html.div style={[themedTokens, styles.square]} />
-
-          <html.div style={themedTokens}>
-            <html.p style={styles.inheritedText}>Inherit theming</html.p>
+        <html.div style={themedTokens}>
+          <html.div style={themedTokensAlt}>
+            <html.p style={styles.inheritedText}>Nested theming</html.p>
             <html.div style={styles.square} />
           </html.div>
+        </html.div>
+      </ExampleBlock>
 
-          <html.div style={themedTokens}>
-            <html.div style={themedTokensAlt}>
-              <html.p style={styles.inheritedText}>Nested theming</html.p>
+      {/* block layout emulation */}
+      <ExampleBlock title="Layout">
+        <html.p>display:block emulation</html.p>
+        <html.div>
+          <html.div style={styles.square} />
+          <html.div style={[styles.square, { backgroundColor: 'blue' }]} />
+        </html.div>
+
+        {/* flex row undoes block layout emulation and correct flex child layout */}
+        <html.p>display:flex defaults and children</html.p>
+        <html.div style={styles.row}>
+          <html.div style={[styles.square, styles.w1000]} />
+          <html.div style={[styles.square, styles.blueSquare]}>
+            <html.div style={styles.whiteBox}>
+              <html.p>Back to block</html.p>
               <html.div style={styles.square} />
+              <html.div style={[styles.square, styles.bgGreen]} />
             </html.div>
           </html.div>
-        </ExampleBlock>
+        </html.div>
 
-        {/* block layout emulation */}
-        <ExampleBlock title="Layout">
-          <html.p>display:block emulation</html.p>
-          <html.div>
-            <html.div style={styles.square} />
-            <html.div style={[styles.square, { backgroundColor: 'blue' }]} />
-          </html.div>
+        <html.p>display:block resets flex properties</html.p>
+        {/* display block undoes row layout and emulates block again */}
+        <html.div style={[styles.row, styles.blockW300]}>
+          <html.div style={styles.square} />
+          <html.div style={[styles.square, styles.bgBlue]} />
+        </html.div>
 
-          {/* flex row undoes block layout emulation and correct flex child layout */}
-          <html.p>display:flex defaults and children</html.p>
-          <html.div style={styles.row}>
-            <html.div style={[styles.square, styles.w1000]} />
-            <html.div style={[styles.square, styles.blueSquare]}>
-              <html.div style={styles.whiteBox}>
-                <html.p>Back to block</html.p>
-                <html.div style={styles.square} />
-                <html.div style={[styles.square, styles.bgGreen]} />
-              </html.div>
-            </html.div>
-          </html.div>
-
-          <html.p>display:block resets flex properties</html.p>
-          {/* display block undoes row layout and emulates block again */}
-          <html.div style={[styles.row, styles.blockW300]}>
-            <html.div style={styles.square} />
-            <html.div style={[styles.square, styles.bgBlue]} />
-          </html.div>
-
-          {/* block and inline layout emulation */}
-          <html.p>
-            display:inline within display:block is{' '}
-            <html.strong>not</html.strong> emulated
-          </html.p>
-          <html.div>
-            <html.div style={styles.redBox}>
-              <html.div style={styles.greenBox} />
-              <html.span style={styles.bgYellow}>one</html.span>
-              <html.span style={styles.bgYellow}>two</html.span>
-            </html.div>
+        {/* block and inline layout emulation */}
+        <html.p>
+          display:inline within display:block is <html.strong>not</html.strong>{' '}
+          emulated
+        </html.p>
+        <html.div>
+          <html.div style={styles.redBox}>
+            <html.div style={styles.greenBox} />
             <html.span style={styles.bgYellow}>one</html.span>
             <html.span style={styles.bgYellow}>two</html.span>
-            <html.div style={styles.redBox} />
           </html.div>
-        </ExampleBlock>
+          <html.span style={styles.bgYellow}>one</html.span>
+          <html.span style={styles.bgYellow}>two</html.span>
+          <html.div style={styles.redBox} />
+        </html.div>
+      </ExampleBlock>
 
-        {/* positioning (static by default) */}
-        <ExampleBlock title="Position">
-          <html.div style={[styles.p50, styles.relative]}>
-            <html.div style={styles.p50}>
-              <html.div style={[styles.square, styles.absTopLeft]} />
-            </html.div>
-            <html.div style={[styles.relative, styles.p50]}>
-              <html.div style={[styles.square, styles.absTopLeft]} />
-            </html.div>
+      {/* positioning (static by default) */}
+      <ExampleBlock title="Position">
+        <html.div style={[styles.p50, styles.relative]}>
+          <html.div style={styles.p50}>
+            <html.div style={[styles.square, styles.absTopLeft]} />
           </html.div>
-        </ExampleBlock>
+          <html.div style={[styles.relative, styles.p50]}>
+            <html.div style={[styles.square, styles.absTopLeft]} />
+          </html.div>
+        </html.div>
+      </ExampleBlock>
 
-        {/* visibility */}
-        <ExampleBlock title="Visibility">
+      {/* visibility */}
+      <ExampleBlock title="Visibility">
+        <html.div style={styles.flex}>
+          <html.div style={[styles.square, styles.visibilityCollapse]} />
+          <html.div style={[styles.square, styles.visibilityHidden]} />
+          <html.div style={[styles.square, styles.visibilityVisible]} />
+        </html.div>
+      </ExampleBlock>
+
+      {/* event emulation */}
+      <ExampleBlock title="Events">
+        <html.input
+          onChange={(e) => {
+            console.log(e.type, e.target.value);
+          }}
+          onKeyDown={(e) => {
+            console.log(e.type, e.key);
+          }}
+          onInput={(e) => {
+            console.log(e.type, e.target.value);
+          }}
+        />
+        <html.textarea
+          onChange={(e) => {
+            console.log(e.type, e.target.value);
+          }}
+          onKeyDown={(e) => {
+            console.log(e.type, e.key);
+          }}
+          onInput={(e) => {
+            console.log(e.type, e.target.value);
+          }}
+        />
+        <html.div
+          onClick={(e) => {
+            setClickData((data) => ({
+              color: data.color === 'red' ? 'blue' : 'red',
+              text: 'click'
+            }));
+            setClickEventData({
+              altKey: e.altKey,
+              button: e.button,
+              ctrlKey: e.ctrlKey,
+              metaKey: e.metaKey,
+              pageX: e.pageX,
+              pageY: e.pageY,
+              shiftKey: e.shiftKey
+            });
+          }}
+          style={[styles.h100, styles.dynamicBg(clickData.color)]}
+        >
+          <html.span style={styles.bgWhite}>{clickData.text}</html.span>
           <html.div style={styles.flex}>
-            <html.div style={[styles.square, styles.visibilityCollapse]} />
-            <html.div style={[styles.square, styles.visibilityHidden]} />
-            <html.div style={[styles.square, styles.visibilityVisible]} />
-          </html.div>
-        </ExampleBlock>
-
-        {/* event emulation */}
-        <ExampleBlock title="Events">
-          <html.input
-            onChange={(e) => {
-              console.log(e.type, e.target.value);
-            }}
-            onKeyDown={(e) => {
-              console.log(e.type, e.key);
-            }}
-            onInput={(e) => {
-              console.log(e.type, e.target.value);
-            }}
-          />
-          <html.textarea
-            onChange={(e) => {
-              console.log(e.type, e.target.value);
-            }}
-            onKeyDown={(e) => {
-              console.log(e.type, e.key);
-            }}
-            onInput={(e) => {
-              console.log(e.type, e.target.value);
-            }}
-          />
-          <html.div
-            onClick={(e) => {
-              setClickData((data) => ({
-                color: data.color === 'red' ? 'blue' : 'red',
-                text: 'click'
-              }));
-              setClickEventData({
-                altKey: e.altKey,
-                button: e.button,
-                ctrlKey: e.ctrlKey,
-                metaKey: e.metaKey,
-                pageX: e.pageX,
-                pageY: e.pageY,
-                shiftKey: e.shiftKey
-              });
-            }}
-            style={[styles.h100, styles.dynamicBg(clickData.color)]}
-          >
-            <html.span style={styles.bgWhite}>{clickData.text}</html.span>
-            <html.div style={styles.flex}>
-              <html.div style={styles.flexGrow}>
-                <html.div>
-                  <html.span>
-                    {clickEventData.altKey ? '✅' : '🚫'} altKey
-                  </html.span>
-                </html.div>
-                <html.div>
-                  <html.span>
-                    {clickEventData.ctrlKey ? '✅' : '🚫'} ctrlKey
-                  </html.span>
-                </html.div>
-                <html.div>
-                  <html.span>
-                    {clickEventData.metaKey ? '✅' : '🚫'} metaKey
-                  </html.span>
-                </html.div>
-                <html.div>
-                  <html.span>
-                    {clickEventData.shiftKey ? '✅' : '🚫'} shiftKey
-                  </html.span>
-                </html.div>
+            <html.div style={styles.flexGrow}>
+              <html.div>
+                <html.span>
+                  {clickEventData.altKey ? '✅' : '🚫'} altKey
+                </html.span>
               </html.div>
-              <html.div style={styles.flexGrow}>
-                <html.div>
-                  <html.span>button: {clickEventData.button}</html.span>
-                </html.div>
-                <html.div>
-                  <html.span>pageX: {clickEventData.pageX}</html.span>
-                </html.div>
-                <html.div>
-                  <html.span>pageY: {clickEventData.pageY}</html.span>
-                </html.div>
+              <html.div>
+                <html.span>
+                  {clickEventData.ctrlKey ? '✅' : '🚫'} ctrlKey
+                </html.span>
+              </html.div>
+              <html.div>
+                <html.span>
+                  {clickEventData.metaKey ? '✅' : '🚫'} metaKey
+                </html.span>
+              </html.div>
+              <html.div>
+                <html.span>
+                  {clickEventData.shiftKey ? '✅' : '🚫'} shiftKey
+                </html.span>
+              </html.div>
+            </html.div>
+            <html.div style={styles.flexGrow}>
+              <html.div>
+                <html.span>button: {clickEventData.button}</html.span>
+              </html.div>
+              <html.div>
+                <html.span>pageX: {clickEventData.pageX}</html.span>
+              </html.div>
+              <html.div>
+                <html.span>pageY: {clickEventData.pageY}</html.span>
               </html.div>
             </html.div>
           </html.div>
+        </html.div>
 
-          <html.img
-            onLoad={(e) => {
-              setImageLoadText(`${e.type}: loaded`);
-            }}
-            width={150}
-            height={150}
-            src="http://placehold.jp/150x150.png"
-            style={styles.objContain}
-          />
-          <html.span>{imageLoadText}</html.span>
-          <html.img
-            onError={(e) => {
-              setImageErrorText(`${e.type}: errored`);
-            }}
-            width={150}
-            height={150}
-            src="http://error"
-            style={styles.objContain}
-          />
-          <html.span>{imageErrorText}</html.span>
-        </ExampleBlock>
+        <html.img
+          onLoad={(e) => {
+            setImageLoadText(`${e.type}: loaded`);
+          }}
+          width={150}
+          height={150}
+          src="http://placehold.jp/150x150.png"
+          style={styles.objContain}
+        />
+        <html.span>{imageLoadText}</html.span>
+        <html.img
+          onError={(e) => {
+            setImageErrorText(`${e.type}: errored`);
+          }}
+          width={150}
+          height={150}
+          src="http://error"
+          style={styles.objContain}
+        />
+        <html.span>{imageErrorText}</html.span>
+      </ExampleBlock>
 
-        {/* CSS transitions shim */}
-        <ExampleBlock title="CSS Transitions">
-          <html.p>Color</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionBackgroundColor,
-              styles.dynamicBg(backgroundColor)
-            ]}
-          />
-          <html.button
-            onClick={() =>
-              setBackgroundColor(
-                backgroundColor === BGCOLOR_INACTIVE
-                  ? BGCOLOR_ACTIVE
-                  : BGCOLOR_INACTIVE
-              )
-            }
-          >
-            Toggle
-          </html.button>
+      {/* CSS transitions shim */}
+      <ExampleBlock title="CSS Transitions">
+        <html.p>Color</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionBackgroundColor,
+            styles.dynamicBg(backgroundColor)
+          ]}
+        />
+        <html.button
+          onClick={() =>
+            setBackgroundColor(
+              backgroundColor === BGCOLOR_INACTIVE
+                ? BGCOLOR_ACTIVE
+                : BGCOLOR_INACTIVE
+            )
+          }
+        >
+          Toggle
+        </html.button>
 
-          <html.p>Opacity</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionOpacity,
-              styles.dynamicOpacity(opacity)
-            ]}
-          />
-          <html.button onClick={() => setOpacity(opacity === 0 ? 1 : 0)}>
-            Toggle
-          </html.button>
+        <html.p>Opacity</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionOpacity,
+            styles.dynamicOpacity(opacity)
+          ]}
+        />
+        <html.button onClick={() => setOpacity(opacity === 0 ? 1 : 0)}>
+          Toggle
+        </html.button>
 
-          <html.p>Translate</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionTransform,
-              styles.dynamicTransform(transform)
-            ]}
-          />
-          <html.button
-            onClick={() =>
-              setTransform(
-                transform === TRANSLATE_NONE ? TRANSLATE_RIGHT : TRANSLATE_NONE
-              )
-            }
-          >
-            Toggle
-          </html.button>
+        <html.p>Translate</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionTransform,
+            styles.dynamicTransform(transform)
+          ]}
+        />
+        <html.button
+          onClick={() =>
+            setTransform(
+              transform === TRANSLATE_NONE ? TRANSLATE_RIGHT : TRANSLATE_NONE
+            )
+          }
+        >
+          Toggle
+        </html.button>
 
-          <html.p>Translate and Scale</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionTransform,
-              styles.dynamicTransform(scale)
-            ]}
-          />
-          <html.button
-            onClick={() =>
-              setScale(scale === SCALE_INACTIVE ? SCALE_ACTIVE : SCALE_INACTIVE)
-            }
-          >
-            Toggle
-          </html.button>
+        <html.p>Translate and Scale</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionTransform,
+            styles.dynamicTransform(scale)
+          ]}
+        />
+        <html.button
+          onClick={() =>
+            setScale(scale === SCALE_INACTIVE ? SCALE_ACTIVE : SCALE_INACTIVE)
+          }
+        >
+          Toggle
+        </html.button>
 
-          <html.p>Rotate</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionTransform,
-              styles.dynamicTransform(rotate)
-            ]}
-          />
-          <html.button
-            onClick={() =>
-              setRotate(
-                rotate === ROTATE_INACTIVE ? ROTATE_ACTIVE : ROTATE_INACTIVE
-              )
-            }
-          >
-            Toggle
-          </html.button>
+        <html.p>Rotate</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionTransform,
+            styles.dynamicTransform(rotate)
+          ]}
+        />
+        <html.button
+          onClick={() =>
+            setRotate(
+              rotate === ROTATE_INACTIVE ? ROTATE_ACTIVE : ROTATE_INACTIVE
+            )
+          }
+        >
+          Toggle
+        </html.button>
 
-          <html.p>Skew</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionTransform,
-              styles.dynamicTransform(skew)
-            ]}
-          />
-          <html.button
-            onClick={() =>
-              setSkew(skew === SKEW_INACTIVE ? SKEW_ACTIVE : SKEW_INACTIVE)
-            }
-          >
-            Toggle
-          </html.button>
-          <html.p>Transform + Opacity</html.p>
-          <html.div
-            style={[
-              styles.square,
-              styles.transitionAll,
-              styles.dynamicOpacity(fadeUpActive ? 1 : 0),
-              styles.dynamicTransform(
-                fadeUpActive ? 'translateY(0)' : 'translateY(100px)'
-              )
-            ]}
-          />
-          <html.button onClick={() => setFadeUpActive(!fadeUpActive)}>
-            Toggle
-          </html.button>
-        </ExampleBlock>
-        <ExampleBlock title="Keyframe Animations">
-          <html.div
-            style={[
-              styles.square,
-              styles.bgRed,
-              animate && styles.keyframeAnimation
-            ]}
-          />
-          <html.button onClick={() => setAnimate(!animate)}>
-            {animate ? 'Reset' : 'Start'}
-          </html.button>
-        </ExampleBlock>
-        <ExampleBlock title="Hover">
-          <html.div style={styles.squareHover} />
-        </ExampleBlock>
-      </html.div>
-    </ScrollView>
+        <html.p>Skew</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionTransform,
+            styles.dynamicTransform(skew)
+          ]}
+        />
+        <html.button
+          onClick={() =>
+            setSkew(skew === SKEW_INACTIVE ? SKEW_ACTIVE : SKEW_INACTIVE)
+          }
+        >
+          Toggle
+        </html.button>
+        <html.p>Transform + Opacity</html.p>
+        <html.div
+          style={[
+            styles.square,
+            styles.transitionAll,
+            styles.dynamicOpacity(fadeUpActive ? 1 : 0),
+            styles.dynamicTransform(
+              fadeUpActive ? 'translateY(0)' : 'translateY(100px)'
+            )
+          ]}
+        />
+        <html.button onClick={() => setFadeUpActive(!fadeUpActive)}>
+          Toggle
+        </html.button>
+      </ExampleBlock>
+      <ExampleBlock title="Keyframe Animations">
+        <html.div
+          style={[
+            styles.square,
+            styles.bgRed,
+            animate && styles.keyframeAnimation
+          ]}
+        />
+        <html.button onClick={() => setAnimate(!animate)}>
+          {animate ? 'Reset' : 'Start'}
+        </html.button>
+      </ExampleBlock>
+      <ExampleBlock title="Hover">
+        <html.div style={styles.squareHover} />
+      </ExampleBlock>
+    </html.div>
   );
 }
 

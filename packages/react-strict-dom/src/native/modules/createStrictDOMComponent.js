@@ -40,7 +40,8 @@ import {
   TextInput,
   Text,
   View,
-  Pressable
+  Pressable,
+  ScrollView
 } from 'react-native';
 import * as stylex from '../stylex';
 
@@ -207,6 +208,12 @@ export function createStrictDOMComponent<T: any, P: StrictProps>(
       delete nativeProps.suppressHydrationWarning;
       validateStrictProps(nativeProps);
 
+      if (
+        props.style?.overflow === 'scroll' ||
+        props.style?.overflow === 'auto'
+      ) {
+        nativeComponent = ScrollView ?? 'ScrollView';
+      }
       if (ariaPosInSet != null) {
         nativeProps.accessibilityPosInSet = ariaPosInSet;
       }
@@ -523,7 +530,10 @@ export function createStrictDOMComponent<T: any, P: StrictProps>(
         [string]: mixed
       } = {
         ..._styleProps,
-        style: { ..._styleProps.style }
+        style: { ..._styleProps.style },
+        ...(nativeComponent === ScrollView && {
+          contentContainerStyleProps: { ..._styleProps.style }
+        })
       };
 
       if (

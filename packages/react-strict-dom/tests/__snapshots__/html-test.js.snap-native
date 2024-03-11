@@ -1631,6 +1631,17 @@ exports[`html "div" supports inline event handlers 1`] = `
 />
 `;
 
+exports[`html "div" supports overflow style 1`] = `
+<ScrollView
+  style={
+    {
+      "overflow": "scroll",
+      "position": "static",
+    }
+  }
+/>
+`;
+
 exports[`html "em" ignores and warns about unsupported attributes 1`] = `
 <Text
   style={

@@ -485,4 +485,11 @@ describe('html', () => {
       expect(root.toJSON()).toMatchSnapshot();
     });
   });
+
+  describe('overflow styles', () => {
+    test('scroll', () => {
+      const root = create(<html.div style={{ overflow: 'scroll' }} />);
+      expect(root.toJSON()).toMatchSnapshot();
+    });
+  });
 });

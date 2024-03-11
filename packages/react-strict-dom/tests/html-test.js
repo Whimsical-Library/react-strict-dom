@@ -343,4 +343,9 @@ describe('html', () => {
     );
     expect(root.toJSON()).toMatchSnapshot();
   });
+
+  test('"div" supports overflow style', () => {
+    const root = create(<html.div style={{ overflow: 'scroll' }} />);
+    expect(root.toJSON()).toMatchSnapshot();
+  });
 });
